@@ -7,6 +7,4 @@ class Peasant
     @attack_power = 0
   end
 
-
-
 end

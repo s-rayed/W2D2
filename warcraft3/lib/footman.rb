@@ -17,7 +17,7 @@ class Footman < Unit
   end
 
   def damage(amount)
-    self.health_points -= amount/2
+    self.health_points -= amount
   end
 
 end

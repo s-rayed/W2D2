@@ -16,16 +16,18 @@ describe SiegeEngine do
 
 
   describe "#attack!" do
-    it "should deal double the damage against barracks and can't attack units" do
-      enemy = Barracks.new
-      enemy2 = Unit.new(10, 10)
-      enemy3 = SiegeEngine.new
-      expect(enemy).to receive(:damage).with(100)
+    it "should deal double the damage against barracks and not be able to attack units" do
+      enemy1 = Barracks.new
+      @siegeengine.attack!(enemy1)
+      expect(enemy1.health_points).to eq(400)
+    end
+  end
+
+  describe "#attack!" do
+    it "should not be able to attack other units" do
+      enemy = Footman.new
       @siegeengine.attack!(enemy)
-      expect(enemy2).to receive(:damage).with(0)
-      @siegeengine.attack!(enemy2)
-      expect(enemy3).to receive(:damage).with(50)
-      @siegeengine.attack!(enemy3)
+      expect(@siegeengine.attack!(enemy)).to be_falsey
     end
   end
     

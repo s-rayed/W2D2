@@ -1,4 +1,3 @@
-require 'pry'
 class Barracks
 
   attr_reader :gold, :food, :lumber
@@ -36,9 +35,7 @@ class Barracks
   end
 
   def damage(amount)
-    if amount == 10
-      self.health_points -= (amount/2)
-    end
+    self.health_points -= (amount/2)
   end
 
 

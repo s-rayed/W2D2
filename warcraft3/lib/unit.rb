@@ -1,7 +1,7 @@
 class Unit
 
-  attr_reader :attack_points, :health_points
-  # attr_accessor :health_points
+  attr_accessor :attack_power
+  attr_reader :health_points
 
   def initialize(health_points, attack_power)
     @health_points = health_points
@@ -17,7 +17,13 @@ class Unit
   end
 
   def attack!(enemy)
-    enemy.damage(@attack_power) unless self.dead?
+    if self.dead? || (self.class == SiegeEngine && enemy.class == Footman)
+      nil
+    elsif (self.class == SiegeEngine && enemy.class == Barracks)
+      enemy.damage((@attack_power)*4)
+    else
+      enemy.damage(@attack_power)
+    end
   end
 
   def dead?
